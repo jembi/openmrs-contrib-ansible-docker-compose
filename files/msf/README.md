@@ -64,7 +64,7 @@ docker exec -it msf_openmrs-referenceapplication-mysql_1 bash
 ```
 - restore backup to replace existing database
 ```
-mysql -uopenmrs -pAdmin123 -e "drop openmrs";
+mysql -uopenmrs -pAdmin123 -e "drop database openmrs";
 mysql -uopenmrs -pAdmin123 -e "create database openmrs";
 mysql -uopenmrs -pAdmin123 openmrs < /tmp/dump.sql;
 rm /tmp/dump.sql;
