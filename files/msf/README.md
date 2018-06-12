@@ -50,3 +50,22 @@ If you want to generate the SQL with the demo data:
   - Also, change `atlas.stopAskingToConfigure` to `true` on the SQL file <https://talk.openmrs.org/t/new-demo-server-is-ready-for-tests/9685/12?u=cintiadr>
 
 You'll want to replace the SQL file in dbdump, but no other changes should be committed.
+
+
+### Restoring a dump
+- Add msf-2018-06-12.sql (dump file) into dbdump folder if u wish to share it or replace existing
+- Copy dump file into mysql docker image
+```
+docker cp dbdump/msf-2018-06-12.sql msf_openmrs-referenceapplication-mysql_1:/tmp/dump.sql
+```
+- Log into the mysql docker instance's shell
+```
+docker exec -it msf_openmrs-referenceapplication-mysql_1 bash
+```
+- restore backup to replace existing database
+```
+mysql -uopenmrs -pAdmin123 -e "drop openmrs";
+mysql -uopenmrs -pAdmin123 -e "create database openmrs";
+mysql -uopenmrs -pAdmin123 openmrs < /tmp/dump.sql;
+rm /tmp/dump.sql;
+```
