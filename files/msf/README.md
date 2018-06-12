@@ -12,10 +12,11 @@ $ docker-compose down -v
 $ OPENMRS_VERSION=2.5 docker-compose up
 ```
 pressing Ctrl + C will exit out of the container,
-add option `-d` in-order to run the container in the background
+add option `-d` in-order to run the container in the background.
+
 If you don't add a _OPENMRS_VERSION_ variable, it will use `demo` docker tag.
 
-Application will be eventually accessible on http://localhost:8084/openmrs.
+Application will be eventually accessible on http://localhost/openmrs.
 Credentials on shipped demo data:
   - Username: admin
   - Password: Admin123
